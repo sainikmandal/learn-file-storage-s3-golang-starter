@@ -63,8 +63,8 @@ func (c *Client) autoMigrate() error {
 		title TEXT NOT NULL,
 		description TEXT,
 		thumbnail_url TEXT,
-		video_url TEXT TEXT,
-		user_id INTEGER,
+		video_url TEXT,
+		user_id TEXT NOT NULL,
 		FOREIGN KEY(user_id) REFERENCES users(id)
 	);
 	`
