@@ -5,18 +5,16 @@ import (
 	"os"
 	"path/filepath"
 	"strings"
-
-	"github.com/google/uuid"
 )
 
 func (cfg apiConfig) ensureAssetsDir() error {
 	if _, err := os.Stat(cfg.assetsRoot); os.IsNotExist(err) {
-		return os.Mkdir(cfg.assetsRoot, 0755)
+		return os.MkdirAll(cfg.assetsRoot, 0755)
 	}
 	return nil
 }
 
-func getAssetPath(videoID uuid.UUID, mediaType string) string {
+func getAssetPath(videoID, mediaType string) string {
 	ext := mediaTypeToExt(mediaType)
 	return fmt.Sprintf("%s%s", videoID, ext)
 }
